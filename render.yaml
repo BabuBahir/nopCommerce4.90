@@ -21,4 +21,3 @@ services:
         value: mysql
       - key: ConnectionStrings__ConnectionString
         sync: false
-        value: "Server=<aiven-host>:<port>;Database=<db>;User=<user>;Password=<password>;AllowUserVariables=True;UseAffectedRows=False;TreatTinyAsBoolean=False;SslMode=Required;"
