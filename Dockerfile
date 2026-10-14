@@ -48,7 +48,7 @@ WORKDIR /app
 
 COPY --from=build /app/published .
 
-ENV ASPNETCORE_URLS=http://+:${PORT:-80}
-EXPOSE ${PORT:-80}
-                            
-ENTRYPOINT ["dotnet", "Nop.Web.dll"]
+
+EXPOSE 80
+
+ENTRYPOINT ["sh", "-c", "echo \"Render PORT is this=$PORT\"; exec dotnet Nop.Web.dll --urls \"http://0.0.0.0:${PORT:-80}\""]
