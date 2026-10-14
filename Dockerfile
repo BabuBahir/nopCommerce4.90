@@ -48,7 +48,7 @@ WORKDIR /app
 
 COPY --from=build /app/published .
 
-ENV ASPNETCORE_URLS=http://+:80
-EXPOSE 80
+ENV ASPNETCORE_URLS=http://+:${PORT:-80}
+EXPOSE ${PORT:-80}
                             
 ENTRYPOINT ["dotnet", "Nop.Web.dll"]
