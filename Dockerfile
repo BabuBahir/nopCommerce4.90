@@ -18,7 +18,7 @@ WORKDIR /app/published
 
 RUN mkdir logs bin
 
-RUN chmod 775 App_Data \
+RUN chmod 777 App_Data \
               App_Data/DataProtectionKeys \
               bin \
               logs \
