@@ -18,7 +18,7 @@ WORKDIR /app/published
 
 RUN mkdir logs bin
 
-RUN chmod 775 App_Data \
+RUN chmod 777 App_Data \
               App_Data/DataProtectionKeys \
               bin \
               logs \
@@ -48,7 +48,7 @@ WORKDIR /app
 
 COPY --from=build /app/published .
 
-ENV ASPNETCORE_URLS=http://+:80
+
 EXPOSE 80
-                            
-ENTRYPOINT ["dotnet", "Nop.Web.dll"]
+
+ENTRYPOINT ["sh", "-c", "echo \"Render PORT is this=$PORT\"; exec dotnet Nop.Web.dll --urls \"http://0.0.0.0:${PORT:-80}\""]
