@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: nopcommerce
+    runtime: docker
+    plan: free
+    autoDeployTrigger: 'off'
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /install
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: PORT
+        value: "10000"
+      - key: ASPNETCORE_URLS
+        value: http://+:10000
+      - key: DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
+        value: "false"
+      - key: ConnectionStrings__DataProvider
+        value: mysql
+      - key: ConnectionStrings__ConnectionString
+        sync: false
